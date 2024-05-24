@@ -16,5 +16,28 @@ export const GlobalStyle = createGlobalStyle`
     body, input, textarea, button {
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
+        outline: 0;
+    }
+
+    input {
+        border: none;
+        background: none;
+    }
+
+    input[type=number]::-webkit-inner-spin-button { 
+        -webkit-appearance: none;
+    
+    }
+    input[type=number] { 
+        -moz-appearance: textfield;
+        appearance: textfield;
+
+    }
+
+    button {
+        border: 0;
+        background: none;
+        outline: none;
+        cursor: pointer;
     }
 `
