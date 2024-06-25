@@ -42,39 +42,13 @@ export const DetailsContainer = styled.div`
   gap: 40px;
 `
 
-const DETAILS_COLORS = {
-  orange: 'yellow-dark',
-  yellow: 'yellow-medium',
-  gray: 'base-text',
-  purple: 'purple-medium',
-} as const
-
-interface DetailProps {
-  detailColor: keyof typeof DETAILS_COLORS
-}
-
-export const Detail = styled.div<DetailProps>`
+export const Detail = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
 
   font-size: 1rem;
   color: ${(props) => props.theme['base-text']};
-  span {
-    flex-shrink: 0;
-    display: block;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: ${(props) =>
-      props.theme[DETAILS_COLORS[props.detailColor]]};
-
-    color: ${(props) => props.theme['white-100']};
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
   margin-top: 12px;
 `

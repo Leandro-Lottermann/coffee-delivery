@@ -70,6 +70,7 @@ export const CardPriceContainer = styled.div`
 export const CardActionsContainer = styled.div`
   display: flex;
   gap: 8px;
+  
   > button {
     display: flex;
     align-items: center;
@@ -81,19 +82,4 @@ export const CardActionsContainer = styled.div`
   }
 `
 
-export const CardCountContainer = styled.div`
-  display: flex;
-  padding: 12px 8px;
-  gap: 4px;
-  background-color: ${(props) => props.theme['base-button']};
-  border-radius: 6px;
 
-  button {
-    color: ${(props) => props.theme['purple-medium']};
-  }
-
-  input {
-    width: 20px;
-    text-align: center;
-  }
-`

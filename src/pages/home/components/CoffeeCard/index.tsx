@@ -9,6 +9,7 @@ import {
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 import { useState } from 'react'
 import { CoffeeType } from '../../../../@types/Coffee.interface'
+import { QuantityInput } from '../../../../components/QuantityInput'
 
 interface CoffeeCardProps {
   Coffee: CoffeeType
@@ -23,11 +24,11 @@ export function CoffeeCard({ Coffee }: CoffeeCardProps) {
     })
     .slice(3)
 
-  function handleIncrementQuantity() {
+  function incrementQuantity() {
     setQuantity((state) => state + 1)
   }
 
-  function handleDecrementQuantity() {
+  function decrementQuantity() {
     if (quantity > 1) {
       setQuantity((state) => state - 1)
     }
@@ -52,15 +53,11 @@ export function CoffeeCard({ Coffee }: CoffeeCardProps) {
         </CardPriceContainer>
 
         <CardActionsContainer>
-          <CardCountContainer>
-            <button type="button" onClick={handleDecrementQuantity}>
-              <Minus size={14} />
-            </button>
-            <input type="number" value={quantity} />
-            <button type="button" onClick={handleIncrementQuantity}>
-              <Plus size={14} />
-            </button>
-          </CardCountContainer>
+          <QuantityInput
+            quantity={quantity}
+            handleDecrementQuantity={decrementQuantity}
+            handleIncrementQuantity={incrementQuantity}
+          />
 
           <button type="button">
             <ShoppingCart weight="fill" size={24} />

@@ -8,6 +8,12 @@ import {
   BaseFormContainer,
   AddressPaymentSection,
   PaymentRadiosContainer,
+  OrderPreviewContainer,
+  ValuesContainer,
+  ValueRowLg,
+  ValueRowSml,
+  ButtonOrderSubmit,
+  OrderPreviewSection,
 } from './styles'
 
 import { TextInput } from './components/TextInput'
@@ -15,11 +21,29 @@ import * as zod from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { RadioInput } from './components/RadioInput'
+import { CardOrder } from './components/CardOrder'
+import { coffeesList } from '../../data'
 
 export function Checkout() {
+  const totalItems = (coffeesList[0].price * 2).toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+
+  const entrega = (3.5).toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+
+  const totalValue = (coffeesList[0].price * 2 + 3.5).toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  })
+
   return (
     <CheckoutContainer>
       <AddressPaymentSection>
+        <h2>Complete seu pedido</h2>
         <BaseFormContainer>
           <AddressHeading>
             <MapPin size={22} />
@@ -89,6 +113,31 @@ export function Checkout() {
           </PaymentRadiosContainer>
         </BaseFormContainer>
       </AddressPaymentSection>
+
+      <OrderPreviewSection>
+        <h2>Cafés selecionados</h2>
+        <OrderPreviewContainer>
+          <CardOrder coffee={coffeesList[0]} />
+          <CardOrder coffee={coffeesList[1]} />
+          <CardOrder coffee={coffeesList[2]} />
+          <CardOrder coffee={coffeesList[3]} />
+          <ValuesContainer>
+            <ValueRowSml>
+              <span>Total de itens</span>
+              <span>{totalItems}</span>
+            </ValueRowSml>
+            <ValueRowSml>
+              <span>Entrega</span>
+              <span>{entrega}</span>
+            </ValueRowSml>
+            <ValueRowLg>
+              <span>Total</span>
+              <span>{totalValue}</span>
+            </ValueRowLg>
+          </ValuesContainer>
+          <ButtonOrderSubmit>CONFIRMAR PEDIDO</ButtonOrderSubmit>
+        </OrderPreviewContainer>
+      </OrderPreviewSection>
     </CheckoutContainer>
   )
 }

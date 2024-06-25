@@ -5,4 +5,5 @@ export interface CoffeeType {
   description: string
   image: string
   tags: string[]
+  quantity?: number
 }
